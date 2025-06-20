@@ -14,10 +14,14 @@ render = web.template.render("views/")
 
 class Personas:
     def GET(self):
-        conection = sqlite3.connect("agenda.db")
-        cursor = conection.cursor()
-        result = cursor.execute("select * from personas")
-        return render.personas(result)
+        try:
+            conection = sqlite3.connect("agenda.db")
+            cursor = conection.cursor()
+            result = cursor.execute("select * from personas")
+            return render.personas(result)
+        except Exception as e:
+            print(f"Error001:{e}")
+            return f"No se puedo conectar a la base de datos"
 
     def POST(self):
         form = web.input()
