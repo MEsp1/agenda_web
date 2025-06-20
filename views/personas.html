@@ -1,0 +1,38 @@
+$def with (personas)
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <title>SQLITE demo</title>
+</head>
+<body>
+    <h1>SQLITE3 Personas</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Email</th>
+                <th>Detalle</th>
+                <th>Editar</th>
+                <th>Borrar</th>
+            </tr>
+        </thead>
+        <tbody>
+            $for persona in personas:
+                <tr>
+                    <td>$persona[1]</td>
+                    <td>$persona[2]</td>
+                    <td><a href="/detalle/$persona[0]">👀</a></td>
+                    <td><a href="/editar/$persona[0]">✍️</a></td>
+                    <td><a href="/borrar/$persona[0]">🗑️</a></td>
+                </tr>
+        </tbody>
+    </table>
+    <form action="/" method="post">
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" name="nombre" required>
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+        <button type="submit">Agregar</button>
+    </form>
+</body>
+</html>
