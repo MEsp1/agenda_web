@@ -8,7 +8,7 @@ urls = (
     "/borrar/(.*)", "Borrar"
 )
 
-app = web.application(urls, globals())
+app = web.application(urls, globals())git push -u origin main
 render = web.template.render("views/")
 
 class Personas:
