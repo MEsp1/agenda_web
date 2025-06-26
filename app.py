@@ -19,10 +19,56 @@ class Personas:
         return render.personas(result)
 
     def POST(self):
-        form = web.input()
+        try:
+            form = web.input()
+            conection = sqlite3.connect("agenda.db")
+            cursor = conection.cursor()
+            cursor.execute("INSERT INTO personas (nombre, email) VALUES (?, ?)", (form.nombre, form.email))
+            conection.commit()
+            conection.close()
+            raise web.seeother("/")
+        except Exception as e:
+            return f"Error: {str(e)}"
+
+class Detalle:
+    def GET(self, id_persona):
         conection = sqlite3.connect("agenda.db")
         cursor = conection.cursor()
-        cursor.execute("INSERT INTO personas (nombre, email) VALUES (?, ?)", (form.nombre, form.email))
+        result = cursor.execute("SELECT * FROM personas WHERE id_persona = ?", (id_persona,))
+        persona = result.fetchone()
+        conection.close()
+        if persona:
+            return render.detalle(persona)
+        return "Persona no encontrada"
+
+class Editar:
+    def GET(self, id_persona):
+        conection = sqlite3.connect("agenda.db")
+        cursor = conection.cursor()
+        result = cursor.execute("SELECT * FROM personas WHERE id_persona = ?", (id_persona,))
+        persona = result.fetchone()
+        conection.close()
+        if persona:
+            return render.editar(persona)
+        return "Persona no encontrada"
+
+    def POST(self, id_persona):
+        try:
+            form = web.input()
+            conection = sqlite3.connect("agenda.db")
+            cursor = conection.cursor()
+            cursor.execute("UPDATE personas SET nombre = ?, email = ? WHERE id_persona = ?", (form.nombre, form.email, id_persona))
+            conection.commit()
+            conection.close()
+            raise web.seeother("/")
+        except Exception as e:
+            return f"Error: {str(e)}"
+
+class Borrar:
+    def GET(self, id_persona):
+        conection = sqlite3.connect("agenda.db")
+        cursor = conection.cursor()
+        cursor.execute("DELETE FROM personas WHERE id_persona = ?", (id_persona,))
         conection.commit()
         conection.close()
         raise web.seeother("/")
