@@ -1,0 +1,174 @@
+/* Variables de colores */
+:root {
+  --bg-color: #1e1e1e;
+  --text-color: #f1f1f1;
+  --card-bg: #2b2b2b;
+  --input-border: #00ff9e;
+  --button-bg: #00ff9e;
+  --button-text: #1e1e1e;
+  --button-hover: #1dcf8c;
+}
+
+/* Reseteos y base */
+* {
+  box-sizing: border-box;
+  transition: all 0.3s ease;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 20px;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+}
+
+/* Títulos */
+h1 {
+  text-align: center;
+  margin-bottom: 30px;
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+/* Tablas */
+table {
+  margin: 0 auto;
+  border-collapse: collapse;
+  width: 60%;
+  text-align: center;
+  background-color: var(--card-bg);
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 0 12px rgba(0, 255, 158, 0.25);
+}
+
+th, td {
+  padding: 12px 15px;
+  border: 1px solid #00ff9e;
+}
+
+th {
+  background-color: var(--button-bg);
+  color: var(--button-text);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+td {
+  background-color: #393939;
+}
+
+table {
+  /* tu CSS actual */
+  margin-bottom: 40px; /* espacio extra debajo de la tabla */
+}
+
+
+/* Formularios */
+form {
+  max-width: 500px;
+  margin: 0 auto 30px auto;
+  background-color: var(--card-bg);
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 255, 158, 0.3);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+label {
+  align-self: flex-start;
+  margin-bottom: 8px;
+  font-weight: 600;
+  color: var(--text-color);
+}
+
+input[type="text"],
+input[type="email"] {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 20px;
+  border: 2px solid var(--input-border);
+  border-radius: 8px;
+  background-color: transparent;
+  color: var(--text-color);
+  font-size: 1rem;
+  text-align: center;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus {
+  outline: none;
+  box-shadow: 0 0 8px var(--input-border);
+}
+
+/* Botones y enlaces como botones */
+.boton,
+.boton {
+  padding: 12px 25px;
+  background-color: var(--button-bg);
+  color: var(--button-text);
+  border: none;
+  border-radius: 8px;
+  font-weight: 700;
+  font-size: 1rem;
+  cursor: pointer;
+  text-decoration: none;
+  text-align: center;
+  user-select: none;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.boton:hover {
+  background-color: var(--button-hover);
+  color: #fff;
+}
+
+/* Grupo de botones */
+.button-group,
+.botones {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  width: 100%;
+  margin-top: 15px;
+}
+
+/* Botón alternar modo oscuro (si decides usarlo) */
+.toggle-dark {
+  display: block;
+  margin: 0 auto 25px auto;
+  padding: 12px 30px;
+  background-color: var(--button-bg);
+  color: var(--button-text);
+  border-radius: 10px;
+  font-weight: 700;
+  font-size: 1.1rem;
+  cursor: pointer;
+  border: none;
+  user-select: none;
+}
+
+.toggle-dark:hover {
+  background-color: var(--button-hover);
+  color: #fff;
+}
+
+/* Estilo especial para botón Agregar */
+.btn-agregar {
+  font-size: 1rem;
+  padding: 5px 20px;
+  font-weight: 900;
+  box-shadow: 0 6px 12px rgba(0, 255, 158, 0.5);
+  border: 3px solid var(--button-bg);
+  transition: transform 0.25s ease, box-shadow 0.25s ease, background-color 0.3s ease;
+}
+
+.btn-agregar:hover {
+  background-color: var(--button-hover);
+  color: #fff;
+  transform: scale(1.1);
+  box-shadow: 0 8px 18px rgba(0, 255, 158, 0.8);
+}
