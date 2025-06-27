@@ -8,7 +8,7 @@ urls = (
     "/borrar/(.*)", "Borrar"
 )
 
-app = web.application(urls, globals())git push -u origin main
+app = web.application(urls, globals())
 render = web.template.render("views/")
 
 class Personas:
@@ -68,10 +68,24 @@ class Borrar:
     def GET(self, id_persona):
         conection = sqlite3.connect("agenda.db")
         cursor = conection.cursor()
-        cursor.execute("DELETE FROM personas WHERE id_persona = ?", (id_persona,))
-        conection.commit()
+        result = cursor.execute("SELECT * FROM personas WHERE id_persona = ?", (id_persona,))
+        persona = result.fetchone()
         conection.close()
-        raise web.seeother("/")
+        if persona:
+            return render.borrar(persona)
+        return "Persona no encontrada"
+    
+
+    def POST(self, id_persona):
+        try:
+            conection = sqlite3.connect("agenda.db")
+            cursor = conection.cursor()
+            cursor.execute("DELETE FROM personas WHERE id_persona = ?", (id_persona,))
+            conection.commit()
+            conection.close()
+            raise web.seeother("/")
+        except Exception as e:
+            return f"Error: {str(e)}"
 
 if __name__ == "__main__":
     app.run()

@@ -2,12 +2,103 @@ $def with (persona)
 <!DOCTYPE html>
 <html lang="es">
 <head>
+    <meta charset="UTF-8">
     <title>Detalle de Persona</title>
+    <style>
+        :root {
+            --bg-color: #1e1e1e;
+            --text-color: #f1f1f1;
+            --table-bg: #2b2b2b;
+            --header-bg: #00ff9e;
+            --header-text: #1e1e1e;
+            --cell-bg: #2e2e2e;
+            --border-color: #00ff9e;
+            --button-bg: #00ff9e;
+            --button-text: #1e1e1e;
+            --button-hover: #1dcf8c;
+        }
+
+        * {
+            box-sizing: border-box;
+            transition: all 0.3s ease;
+        }
+
+        body {
+            margin: 0;
+            padding: 30px;
+            background-color: var(--bg-color);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: var(--text-color);
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 32px;
+        }
+
+        table {
+            margin: 0 auto;
+            border-collapse: collapse;
+            width: 60%;
+            background-color: var(--table-bg);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+        }
+
+        th, td {
+            padding: 15px;
+            text-align: center;
+            border: 1px solid var(--border-color);
+        }
+
+        th {
+            background-color: var(--header-bg);
+            color: var(--header-text);
+            text-transform: uppercase;
+            font-weight: bold;
+        }
+
+        td {
+            background-color: var(--cell-bg);
+            font-size: 16px;
+        }
+
+        a {
+            display: block;
+            width: 120px;
+            margin: 40px auto 0;
+            padding: 12px 20px;
+            background-color: var(--button-bg);
+            color: var(--button-text);
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        a:hover {
+            background-color: var(--button-hover);
+            color: white;
+        }
+    </style>
 </head>
 <body>
-    <h1>Detalle de Persona</h1>
-    <p>Nombre: $persona[1]</p>
-    <p>Email: $persona[2]</p>
-    <a href="/">Volver</a>
+    <h1>👤 Detalle de Persona</h1>
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Email</th>
+        </tr>
+        <tr>
+            <td>$persona[0]</td>
+            <td>$persona[1]</td>
+            <td>$persona[2]</td>
+        </tr>
+    </table>
+
+    <a href="/">↩️ Volver</a>
 </body>
 </html>
